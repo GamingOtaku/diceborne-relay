@@ -1,0 +1,10 @@
+# Render 免费方案部署（把 relay/ 目录单独作为一个 Git 仓库推上去，这个文件就在仓库根目录）。
+# Render 控制台：New → Blueprint → 选这个仓库。部署后地址是 wss://<服务名>.onrender.com
+# 免费实例 15 分钟没有流量会休眠，下次连接约 1 分钟唤醒：开房前先在浏览器打开 https://<服务名>.onrender.com/health 叫醒它。
+services:
+  - type: web
+    name: diceborne-relay
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /health
